@@ -1,0 +1,22 @@
+namespace :workflow do
+
+selfdir=File.dirname(__FILE__)
+
+task :default => [:help]
+
+task :help do
+	puts "Use rake -T to list targets"
+end
+
+task :dot_exists do
+	# Detects whether we have rake
+	sh "dot -? 2>&1 1>/dev/null"
+end
+
+desc 'Creates the workflow graph from workflow.dot'
+task :graph => [:dot_exists] do
+	sh "dot -Tsvg -o #{selfdir}/workflow.svg #{selfdir}/workflow.dot"
+end
+
+
+end  # namespace

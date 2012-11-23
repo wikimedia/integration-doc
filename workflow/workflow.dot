@@ -1,0 +1,63 @@
+digraph ci_workflow {
+
+	graph [ fontname=Arial, fontsize=12, splines=polyline ]
+	node  [ fontname=Arial, fontsize=11 ]
+	edge  [ fontname=Arial, fontsize=10 ]
+
+	// From left to right
+    rankdir=LR;
+	// Default shape
+	node [shape = circle];
+
+	START [shape=Mdiamond label = "User writes\na patch" ];
+	WAIT_LINT   [ label = "Awaiting\nlinting" ];
+	START -> WAIT_LINT [ label = "push to Gerrit" ]
+
+	WAIT_LINT -> LINT_CHECK [ label = "Automatic check" ];
+
+	LINT_CHECK  [ shape=rect label = "linting\n+ checkstyle\n+ whitespaces" ];
+	LINT_CHECK -> WAIT_LINT [ label = "Fail:\nVerified -1" ];
+	LINT_CHECK -> LINTED [ label = "Success: Verified +1" constraint=false ];
+
+	LINTED [ label = "Awaiting\nreview" ];
+
+	REVIEW [ shape=rect label = "Human decide\nreview score" ];
+	LINTED -> REVIEW [ label = "Review by human" ];
+	REVIEW -> LINTED [ label = "CR +1, 0, -1 or -2" ];
+
+	UNIT_TESTS [ shape=rect label = "Unit tests\nperformed" ];
+	REVIEW -> UNIT_TESTS [ label = "CR +2" constraint=false];
+
+	UNIT_TESTS -> LINTED [ label = "Failure: V-1, CR-2" constraint=false];
+
+	UNIT_TESTS -> WAIT_SUBMIT [ label = "Success\nVerified+1\nCR+1" ];
+
+	PATCH_MERGED [shape=Msquare label = "Patch\nmerged" ];
+
+	WAIT_SUBMIT -> PATCH_MERGED [ label = "Press [submit]" ];
+	WAIT_SUBMIT [ label ="Awaiting\nSubmission" ];
+
+
+	REGRESSION_TESTS [
+		shape=rect
+		label="Regression tests:\n-Unit tests\n- Selenium\n- Testswarm"
+	];
+	PATCH_MERGED -> REGRESSION_TESTS [ label="Notification to Jenkins" constraint=false ];
+
+	SUCCESS [
+		label="Patch\nvalidated"
+		shape=doublecircle
+		style="filled"
+		fillcolor="green"
+	];
+	REGRESSION_TESTS -> SUCCESS [ label="All passed" ];
+
+	REGRESSION [
+		label="Regression"
+		shape=triangle
+		style="filled,bold"
+		fillcolor="yellow"
+		color="red"
+	];
+	REGRESSION_TESTS -> REGRESSION [ label="Some failure" ];
+}
