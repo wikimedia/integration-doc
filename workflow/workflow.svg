@@ -61,7 +61,7 @@
 <g id="edge8" class="edge"><title>LINT_CHECK&#45;&gt;LINTED</title>
 <path fill="none" stroke="black" d="M543.677,-474.839C533.749,-469.875 526,-466 526,-466 526,-466 434,-434.501 434,-434.501 434,-434.501 220.622,-407.681 121.508,-395.223"/>
 <polygon fill="black" stroke="black" points="121.788,-391.731 111.429,-393.956 120.915,-398.676 121.788,-391.731"/>
-<text text-anchor="middle" x="346" y="-435.499" font-family="Arial" font-size="10.00">Success: Verified +1</text>
+<text text-anchor="middle" x="346" y="-435.499" font-family="Arial" font-size="10.00">Success: Verified +0</text>
 </g>
 <!-- REVIEW -->
 <g id="node9" class="node"><title>REVIEW</title>

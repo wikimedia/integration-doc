@@ -17,7 +17,7 @@ digraph ci_workflow {
 
 	LINT_CHECK  [ shape=rect label = "linting\n+ checkstyle\n+ whitespaces" ];
 	LINT_CHECK -> WAIT_LINT [ label = "Fail:\nVerified -1" ];
-	LINT_CHECK -> LINTED [ label = "Success: Verified +1" constraint=false ];
+	LINT_CHECK -> LINTED [ label = "Success: Verified +0" constraint=false ];
 
 	LINTED [ label = "Awaiting\nreview" ];
 
