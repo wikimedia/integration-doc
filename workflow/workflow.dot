@@ -16,8 +16,8 @@ digraph ci_workflow {
 	WAIT_LINT -> LINT_CHECK [ label = "Automatic check" ];
 
 	LINT_CHECK  [ shape=rect label = "linting\n+ checkstyle\n+ whitespaces" ];
-	LINT_CHECK -> WAIT_LINT [ label = "Fail:\nVerified -1" ];
-	LINT_CHECK -> LINTED [ label = "Success: Verified +0" constraint=false ];
+	LINT_CHECK -> WAIT_LINT [ label = "Fail:\nCR 0\nVerified -1" ];
+	LINT_CHECK -> LINTED [ label = "Success: Verified +0 CR +1" constraint=false ];
 
 	LINTED [ label = "Awaiting\nreview" ];
 
@@ -26,17 +26,18 @@ digraph ci_workflow {
 	REVIEW -> LINTED [ label = "CR +1, 0, -1 or -2" ];
 
 	UNIT_TESTS [ shape=rect label = "Unit tests\nperformed" ];
-	REVIEW -> UNIT_TESTS [ label = "CR +2" constraint=false];
+	REVIEW -> UNIT_TESTS [ label = "Human approved\nCR +2" constraint=false];
 
-	UNIT_TESTS -> LINTED [ label = "Failure: V-1, CR-2" constraint=false];
+	UNIT_TESTS -> LINTED [ label = "Unit tests fail:\nVerified -1, CR -2" constraint=false];
 
-	UNIT_TESTS -> WAIT_SUBMIT [ label = "Success\nVerified+1\nCR+1" ];
+	UNIT_TESTS -> WAIT_SUBMIT [ label = "Unit tests pass:\nVerified +1\nCR +1" ];
 
 	PATCH_MERGED [shape=Msquare label = "Patch\nmerged" ];
 
 	WAIT_SUBMIT -> PATCH_MERGED [ label = "Press [submit]" ];
 	WAIT_SUBMIT [ label ="Awaiting\nSubmission" ];
 
+	UNIT_TESTS -> PATCH_MERGED [ label = "Possible auto submission\nwhen using pipeline\ngate-and-submit"];
 
 	REGRESSION_TESTS [
 		shape=rect
