@@ -16,8 +16,8 @@ digraph ci_workflow {
 	WAIT_LINT -> LINT_CHECK [ label = "Automatic check" ];
 
 	LINT_CHECK  [ shape=rect label = "linting\n+ checkstyle\n+ whitespaces" ];
-	LINT_CHECK -> WAIT_LINT [ label = "Fail:\nCR 0\nVerified -1" ];
-	LINT_CHECK -> LINTED [ label = "Success: Verified +0 CR +1" constraint=false ];
+	LINT_CHECK -> WAIT_LINT [ label = "Fail:\nVerified -1" ];
+	LINT_CHECK -> LINTED [ label = "Success: Verified +1" constraint=false ];
 
 	LINTED [ label = "Awaiting\nreview" ];
 
@@ -28,9 +28,9 @@ digraph ci_workflow {
 	UNIT_TESTS [ shape=rect label = "Unit tests\nperformed" ];
 	REVIEW -> UNIT_TESTS [ label = "Human approved\nCR +2" constraint=false];
 
-	UNIT_TESTS -> LINTED [ label = "Unit tests fail:\nVerified -1, CR -2" constraint=false];
+	UNIT_TESTS -> LINTED [ label = "Unit tests fail:\nVerified -1" constraint=false];
 
-	UNIT_TESTS -> WAIT_SUBMIT [ label = "Unit tests pass:\nVerified +1\nCR +1" ];
+	UNIT_TESTS -> WAIT_SUBMIT [ label = "Unit tests pass:\nVerified +2" ];
 
 	PATCH_MERGED [
 		shape=Msquare
