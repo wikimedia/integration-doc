@@ -42,7 +42,7 @@ digraph ci_workflow {
 	WAIT_SUBMIT -> PATCH_MERGED [ label = "Press [submit]" ];
 	WAIT_SUBMIT [ label ="Awaiting\nSubmission" ];
 
-	UNIT_TESTS -> PATCH_MERGED [ label = "Possible auto submission\nwhen using pipeline\ngate-and-submit"];
+	UNIT_TESTS -> PATCH_MERGED [ label = "Possible auto submission\nwhen using Zuul pipeline\ngate-and-submit"];
 
 	REGRESSION_TESTS [
 		shape=rect

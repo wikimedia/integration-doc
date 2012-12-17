@@ -131,7 +131,7 @@
 <path fill="none" stroke="black" d="M104.399,-258.604C157.689,-253.018 258,-242.503 258,-242.503 258,-242.503 434,-242.503 434,-242.503 434,-242.503 505.307,-254.464 550.241,-262.002"/>
 <polygon fill="black" stroke="black" points="549.774,-265.472 560.215,-263.675 550.932,-258.569 549.774,-265.472"/>
 <text text-anchor="middle" x="346" y="-267.497" font-family="Arial" font-size="10.00">Possible auto submission</text>
-<text text-anchor="middle" x="346" y="-255.998" font-family="Arial" font-size="10.00">when using pipeline</text>
+<text text-anchor="middle" x="346" y="-255.998" font-family="Arial" font-size="10.00">when using Zuul pipeline</text>
 <text text-anchor="middle" x="346" y="-244.499" font-family="Arial" font-size="10.00">gate&#45;and&#45;submit</text>
 </g>
 <!-- WAIT_SUBMIT&#45;&gt;PATCH_MERGED -->
