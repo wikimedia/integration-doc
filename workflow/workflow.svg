@@ -113,12 +113,12 @@
 <path fill="none" stroke="black" d="M104.119,-270.942C148.795,-283.379 230.475,-306.118 286.22,-321.636"/>
 <polygon fill="black" stroke="black" points="285.394,-325.039 295.967,-324.35 287.272,-318.296 285.394,-325.039"/>
 <text text-anchor="middle" x="200" y="-331.497" font-family="Arial" font-size="10.00">Unit tests pass:</text>
-<text text-anchor="middle" x="200" y="-319.998" font-family="Arial" font-size="10.00">Verified +1</text>
-<text text-anchor="middle" x="200" y="-308.499" font-family="Arial" font-size="10.00">CR +1</text>
+<text text-anchor="middle" x="200" y="-319.998" font-family="Arial" font-size="10.00">Verified +2</text>
+<text text-anchor="middle" x="200" y="-308.499" font-family="Arial" font-size="10.00">CR 0</text>
 </g>
 <!-- PATCH_MERGED -->
 <g id="node17" class="node"><title>PATCH_MERGED</title>
-<polygon fill="none" stroke="black" points="613.798,-294.798 560.202,-294.798 560.202,-241.202 613.798,-241.202 613.798,-294.798"/>
+<polygon fill="pink" stroke="black" points="613.798,-294.798 560.202,-294.798 560.202,-241.202 613.798,-241.202 613.798,-294.798"/>
 <polyline fill="none" stroke="black" points="572.202,-294.798 560.202,-282.798 "/>
 <polyline fill="none" stroke="black" points="560.202,-253.202 572.202,-241.202 "/>
 <polyline fill="none" stroke="black" points="601.798,-241.202 613.798,-253.202 "/>

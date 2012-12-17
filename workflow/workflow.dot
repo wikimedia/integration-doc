@@ -32,7 +32,12 @@ digraph ci_workflow {
 
 	UNIT_TESTS -> WAIT_SUBMIT [ label = "Unit tests pass:\nVerified +1\nCR +1" ];
 
-	PATCH_MERGED [shape=Msquare label = "Patch\nmerged" ];
+	PATCH_MERGED [
+		shape=Msquare
+		label = "Patch\nmerged"
+		style="filled"
+		fillcolor="pink"
+	];
 
 	WAIT_SUBMIT -> PATCH_MERGED [ label = "Press [submit]" ];
 	WAIT_SUBMIT [ label ="Awaiting\nSubmission" ];
